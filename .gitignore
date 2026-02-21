@@ -109,3 +109,109 @@ discord-token.txt
 
 # Local iOS signing overrides
 apps/ios/LocalSigning.xcconfig
+# 🔐 SECURITY: Credentials & Secrets (NEVER commit)
+##############################################
+
+# Environment files with secrets
+.env
+.env.local
+.env.*.local
+.env.production.local
+.env.railway
+.env.hetzner
+.env.development
+.env.staging
+
+# Token files
+*-token.txt
+*-token.json
+*token*.json
+*credentials*.json
+*.pem
+*.key
+*.cert
+private-key*
+
+# API Keys and secrets
+.api-keys
+.secrets
+secrets/
+credentials/
+*.secret
+.secret*
+
+# Config files with embedded secrets
+openclaw.config.json
+openclaw.config.json5
+.openclaw/
+~/.openclaw/
+
+# Database credentials
+.db.json
+database.json
+db-config.*
+
+# 1Password / Secret managers
+.1password
+.vault
+.secrets.baseline
+
+# IDE/Editor secrets
+.vscode/settings.json
+.idea/*.xml
+.env.local.js
+
+# SSH keys
+.ssh/
+id_*
+*.pub
+known_hosts
+
+# Browser/Downloaded credentials
+Downloads/*-secret*
+~/.credentials/
+
+# Git credentials
+.git-credentials
+.gitconfig.local
+
+# NPM / Bun secrets
+.npmrc.local
+.bunfig.local
+.yarnrc.local
+
+# Application-specific secrets
+.auth0.* 
+.github-token
+.gitlab-token
+
+# Logs with potential secrets
+*.log
+logs/
+
+# Node modules cache (may contain installed secrets)
+node_modules/
+
+# Distribution
+dist/
+
+# Test files with fixtures containing secrets
+test/fixtures/secrets/
+test/fixtures/*.secret
+
+# Docker secrets
+.dockerenvelope
+secrets.env
+
+# Cloud provider configs
+.aws/
+.gcp/
+.azure/
+gcp-service-account.json
+aws-credentials.json
+
+# Backups of secret files
+*.backup
+*.bak
+*.orig
+*~
