@@ -34,6 +34,7 @@ OPENCLAW_WORKSPACE_DIR = "/data/workspace"
 name = "openclaw-gateway"
 runtime = "docker"
 protocol = "http"
+port = 18789
 domains = ["${{ project }}-${{ services.openclaw-gateway.name }}.railway.app"]
 
 # Logging
