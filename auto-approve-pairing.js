@@ -7,7 +7,6 @@
  */
 
 import WebSocket from 'ws';
-import { setTimeout } from 'timers/promises';
 
 const GATEWAY_TOKEN = process.env.OPENCLAW_GATEWAY_TOKEN || '';
 const GATEWAY_LOOPBACK = 'ws://127.0.0.1:18789';
@@ -21,6 +20,10 @@ if (!GATEWAY_TOKEN) {
 console.log('[pairing-auto] ✨ Starting auto-approval monitor...');
 
 let requestCounter = 1;
+
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 const makeRequest = (ws, method, params = {}) => {
   return new Promise((resolve, reject) => {
@@ -140,7 +143,7 @@ async function monitorPairing() {
       await checkAndApprovePairing(ws);
 
       // Wait before next check
-      await setTimeout(POLL_INTERVAL_MS);
+      await delay(POLL_INTERVAL_MS);
 
     } catch (err) {
       console.error(`[pairing-auto] ⚠️  ${err.message}`);
@@ -153,7 +156,7 @@ async function monitorPairing() {
 
       // Wait before reconnecting with exponential backoff
       console.log(`[pairing-auto] ⏳ Reconnecting in ${reconnectDelay}ms...`);
-      await setTimeout(reconnectDelay);
+      await delay(reconnectDelay);
       reconnectDelay = Math.min(reconnectDelay * 1.5, 30000);
     }
   }
