@@ -99,5 +99,13 @@ package-lock.json
 .agents
 .agent/
 
+# Token files and credentials (NEVER COMMIT)
+*-token.txt
+telegram-token.txt
+discord-token.txt
+.openclaw/config.json5
+.openclaw/credentials/
+.env.local
+
 # Local iOS signing overrides
 apps/ios/LocalSigning.xcconfig
