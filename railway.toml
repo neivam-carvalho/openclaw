@@ -11,8 +11,8 @@ buildArgs = ["OPENCLAW_INSTALL_BROWSER=1"]
 [deploy]
 # Replicas
 replicas = 1
-# Health check server on port 8080, OpenClaw gateway handles WebSocket on 18789
-startCommand = "node health-check-server.js"
+# Bash entrypoint that runs OpenClaw + HTTP health check server
+startCommand = "bash entrypoint.sh"
 
 [env]
 # Environment essenciais
