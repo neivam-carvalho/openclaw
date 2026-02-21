@@ -11,13 +11,15 @@ buildArgs = ["OPENCLAW_INSTALL_BROWSER=1"]
 [deploy]
 # Replicas
 replicas = 1
-# Removed aggressive healthcheck - Railway will use HTTP probe on PORT
-startCommand = "node openclaw.mjs gateway --allow-unconfigured --bind lan"
+# Health check server on port 8080, OpenClaw gateway handles WebSocket on 18789
+startCommand = "node health-check-server.js"
 
 [env]
 # Environment essenciais
 NODE_ENV = "production"
-PORT = "18789"
+PORT = "8080"
+
+# Gateway runs on 18789, served via HTTP proxy on 8080
 
 # Diretórios de estado (Railway volume /data)
 OPENCLAW_STATE_DIR = "/data"
