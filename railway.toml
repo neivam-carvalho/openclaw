@@ -1,0 +1,41 @@
+# ============================================
+# OpenClaw Railway Configuration
+# Deploy configurado para máxima segurança
+# ============================================
+
+[build]
+dockerfile = "Dockerfile"
+# Build argument para incluir browser automation
+buildArgs = ["OPENCLAW_INSTALL_BROWSER=1"]
+
+[deploy]
+# Replicas (health checks automáticas)
+replicas = 1
+healthchecks = { cmd = "curl -f http://localhost:8080/health || exit 1", interval = 30 }
+startCommand = "node openclaw.mjs gateway --bind lan"
+
+[env]
+# Environment essenciais
+NODE_ENV = "production"
+PORT = "8080"
+
+# Diretórios de estado (Railway volume /data)
+OPENCLAW_STATE_DIR = "/data"
+OPENCLAW_WORKSPACE_DIR = "/data/workspace"
+
+# ⚠️ Variáveis de segurança DEVEM ser setadas no Railway Dashboard
+# Não cometer essas no git!
+# SETUP_PASSWORD = "" # Setado no Railway Dashboard
+# OPENCLAW_GATEWAY_TOKEN = "" # Setado no Railway Dashboard
+# ANTHROPIC_API_KEY = "" # API key Anthropic
+# TELEGRAM_BOT_TOKEN = "" # Bot token Telegram
+
+[[services]]
+name = "openclaw-gateway"
+runtime = "docker"
+protocol = "http"
+domains = ["${{ project }}-${{ services.openclaw-gateway.name }}.railway.app"]
+
+# Logging
+[observability]
+# Railway fornece logs nativos via CLI: railway logs
