@@ -17,6 +17,9 @@ startCommand = "bash entrypoint.sh"
 # Health check configuration
 healthchecks = { path = "/health", port = 8080 }
 
+# HTTPS/SSL: Railway fornece automaticamente certifado SSL válido
+# O domínio deve ser acessado como https://seu-dominio (não http://)
+
 [env]
 # Environment essenciais
 NODE_ENV = "production"
