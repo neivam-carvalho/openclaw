@@ -12,7 +12,7 @@ buildArgs = ["OPENCLAW_INSTALL_BROWSER=1"]
 # Replicas (health checks automáticas)
 replicas = 1
 healthchecks = { cmd = "curl -f http://localhost:8080/health || exit 1", interval = 30 }
-startCommand = "node openclaw.mjs gateway --bind lan"
+startCommand = "node openclaw.mjs gateway --allow-unconfigured --bind lan"
 
 [env]
 # Environment essenciais
