@@ -14,6 +14,9 @@ replicas = 1
 # Bash entrypoint that runs OpenClaw + HTTP health check server
 startCommand = "bash entrypoint.sh"
 
+# Health check configuration
+healthchecks = { path = "/health", port = 8080 }
+
 [env]
 # Environment essenciais
 NODE_ENV = "production"
