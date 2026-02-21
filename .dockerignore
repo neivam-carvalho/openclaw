@@ -19,6 +19,11 @@ node_modules
 **/node_modules
 .pnpm-store
 **/.pnpm-store
+
+# ALWAYS INCLUDE KEY FILES
+!pnpm-lock.yaml
+!package.json
+!.npmrc
 .turbo
 **/.turbo
 .cache
