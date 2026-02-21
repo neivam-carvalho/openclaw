@@ -11,13 +11,13 @@ buildArgs = ["OPENCLAW_INSTALL_BROWSER=1"]
 [deploy]
 # Replicas (health checks automáticas)
 replicas = 1
-healthchecks = { cmd = "curl -f http://localhost:8080/health || exit 1", interval = 30 }
+healthchecks = { cmd = "curl -f http://localhost:18789/ || exit 1", interval = 30 }
 startCommand = "node openclaw.mjs gateway --allow-unconfigured --bind lan"
 
 [env]
 # Environment essenciais
 NODE_ENV = "production"
-PORT = "8080"
+PORT = "18789"
 
 # Diretórios de estado (Railway volume /data)
 OPENCLAW_STATE_DIR = "/data"
