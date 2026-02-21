@@ -9,9 +9,9 @@ dockerfile = "Dockerfile"
 buildArgs = ["OPENCLAW_INSTALL_BROWSER=1"]
 
 [deploy]
-# Replicas (health checks automáticas)
+# Replicas
 replicas = 1
-healthchecks = { cmd = "curl -f http://localhost:18789/ || exit 1", interval = 30 }
+# Removed aggressive healthcheck - Railway will use HTTP probe on PORT
 startCommand = "node openclaw.mjs gateway --allow-unconfigured --bind lan"
 
 [env]
