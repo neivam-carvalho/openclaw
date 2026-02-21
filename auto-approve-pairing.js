@@ -63,10 +63,10 @@ async function connectToGateway() {
     
     ws.once('open', async () => {
       try {
-        // Connect with token
+        // Connect with token - use protocol version 3 (current version)
         const connectRes = await makeRequest(ws, 'connect', {
-          minProtocol: 1,
-          maxProtocol: 1,
+          minProtocol: 3,
+          maxProtocol: 3,
           client: {
             id: 'openclaw-control-ui',
             version: '1.0.0',
