@@ -1,7 +1,7 @@
 // health-check.js
 // Simple HTTP server for health checks
 
-const http = require('http');
+import http from 'http';
 
 const server = http.createServer((req, res) => {
   if (req.url === '/' || req.url === '/health') {
